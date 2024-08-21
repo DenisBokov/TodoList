@@ -9,5 +9,5 @@ import Foundation
 
 
 class TaskManager {
-    
+    let taskList: [Task]
 }

@@ -18,11 +18,7 @@ final class TodoListTableViewController: UITableViewController {
     }
 
     private func setup() {
-        taskMana
-        
-        
-        
-        ger = TaskManager()
+        taskManager = TaskManager()
         let tasks = [
         ]
         taskManager.addTasks(tasks: tasks)
