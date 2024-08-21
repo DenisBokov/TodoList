@@ -8,7 +8,7 @@
 import UIKit
 
 final class TodoListTableViewController: UITableViewController {
-    private var taskManager: ITaskManager! // swiftlint:disable:this implicitly_unwrapped_optional
+    private var taskManager: TaskManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,21 +19,26 @@ final class TodoListTableViewController: UITableViewController {
 
     private func setup() {
         taskManager = TaskManager()
-        let tasks = [
+        let tasks: [Task] = [
+            ImportantTask(titel: "Сходить за хлебом", completed: false, taskPriorety: .low, date: Date()),
+            ImportantTask(titel: "Убраться дома", completed: true, taskPriorety: .medium, date: Date()),
+            ImportantTask(titel: "Сходить за хлебом", completed: false, taskPriorety: .high, date: Date()),
+            RegularTask(titel: "Сходить за хлебом", completed: true)
         ]
-        taskManager.addTasks(tasks: tasks)
+        
+        tasks.forEach { taskManager.addTask(task: $0) }
 
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
     private func getTaskForIndex(_ indexPath: IndexPath) -> Task {
-        taskManager.allTasks()[indexPath.row]
+        taskManager.getAllTasks()[indexPath.row]
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        taskManager.allTasks().count
+        taskManager.getAllTasks().count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,7 +50,7 @@ final class TodoListTableViewController: UITableViewController {
             contentConfiguration.secondaryText = "Deadline: \(task.deadLine.formatted())"
         }
 
-        contentConfiguration.text = task.title
+        contentConfiguration.text = task.titel
         cell.contentConfiguration = contentConfiguration
 
         return cell

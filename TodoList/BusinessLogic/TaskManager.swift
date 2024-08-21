@@ -8,7 +8,7 @@
 import Foundation
 
 
-final class TaskManager: Task {
+final class TaskManager {
     private var taskList: [Task] = []
     
     
@@ -29,6 +29,8 @@ final class TaskManager: Task {
     }
     
     func removeTask(task: Task) {
+        
+        /// Для удаления сравниванием объекты 
         taskList.removeAll { $0 === task }
     }
 }
