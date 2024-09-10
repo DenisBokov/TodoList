@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol TaskManagerProtocol {
-    func allTasks() -> [Task]
-    func completedTasks() -> [Task]
-    func uncompletedTasks() -> [Task]
-    func addTasks(tasks: [Task])
-}
 
 final class TodoListTableViewController: UITableViewController {
     private var taskManager: TaskManager!
@@ -63,5 +57,6 @@ final class TodoListTableViewController: UITableViewController {
         return cell
     }
 }
+
 
 

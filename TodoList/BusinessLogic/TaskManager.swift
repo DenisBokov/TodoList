@@ -7,6 +7,12 @@
 
 import Foundation
 
+protocol TaskManagerProtocol {
+    func allTasks() -> [Task]
+    func completedTasks() -> [Task]
+    func uncompletedTasks() -> [Task]
+    func addTasks(tasks: [Task])
+}
 
 final class TaskManager {
     private var taskList: [Task] = []
@@ -32,5 +38,18 @@ final class TaskManager {
         
         /// Для удаления сравниванием объекты 
         taskList.removeAll { $0 === task }
+    }
+}
+
+extension ImportantTask.TaskPriority: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .high:
+            return "!!!"
+        case .medium:
+            return "!!"
+        case .low:
+            return "!"
+        }
     }
 }
