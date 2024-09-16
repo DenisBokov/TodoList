@@ -38,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let viewController = storyboard.instantiateViewController(
             withIdentifier: "TodoListTableViewController"
-        ) as! TodoListTableViewController // swiftlint:disable:this force_cast
+        ) as! TodoListTableViewController
 
         viewController.taskManager = buildTaskManager()
 
@@ -48,15 +48,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func buildTaskManager() -> TaskManagerProtocol {
         let taskManager = TaskManager()
         let tasks = [
-            ImportantTask(titel: "Do homework", completed: Date(), taskPriorety: .high),
-            RegularTask(title: "Do Workout", completed: true),
-            ImportantTask(title: "Write new tasks", date: Date(), taskPriority: .low),
-            RegularTask(title: "Solve 3 algorithms"),
-            ImportantTask(title: "Go shopping", date: Date(), taskPriority: .medium)
+            ImportantTask(titel: "Сходить за хлебом", completed: false, taskPriorety: .low, date: Date()),
+            ImportantTask(titel: "Убраться дома", completed: true, taskPriorety: .medium, date: Date()),
+            ImportantTask(titel: "Сходить за хлебом", completed: false, taskPriorety: .high, date: Date()),
+            RegularTask(titel: "Сходить за хлебом", completed: true)
         ]
         taskManager.addTasks(tasks: tasks)
 
-        return taskManager
+        return taskManager as! TaskManagerProtocol
     }
 }
 

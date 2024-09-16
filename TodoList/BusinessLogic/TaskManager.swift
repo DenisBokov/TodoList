@@ -34,6 +34,12 @@ final class TaskManager {
         taskList.append(task)
     }
     
+    func addTasks(tasks: [Task]) {
+        tasks.forEach { task in
+            taskList.append(task)
+        }
+    }
+    
     func removeTask(task: Task) {
         
         /// Для удаления сравниванием объекты 

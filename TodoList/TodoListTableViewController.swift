@@ -9,7 +9,7 @@ import UIKit
 
 
 final class TodoListTableViewController: UITableViewController {
-    private var taskManager: TaskManager!
+    var taskManager: TaskManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
