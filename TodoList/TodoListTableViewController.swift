@@ -9,7 +9,7 @@ import UIKit
 
 
 final class TodoListTableViewController: UITableViewController {
-    var taskManager: TaskManager!
+    var taskManager: TaskManagerProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,16 +19,6 @@ final class TodoListTableViewController: UITableViewController {
     }
 
     private func setup() {
-        taskManager = TaskManager()
-        let tasks: [Task] = [
-            ImportantTask(titel: "Сходить за хлебом", completed: false, taskPriorety: .low, date: Date()),
-            ImportantTask(titel: "Убраться дома", completed: true, taskPriorety: .medium, date: Date()),
-            ImportantTask(titel: "Сходить за хлебом", completed: false, taskPriorety: .high, date: Date()),
-            RegularTask(titel: "Сходить за хлебом", completed: true)
-        ]
-        
-        tasks.forEach { taskManager.addTask(task: $0) }
-
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
