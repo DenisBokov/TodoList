@@ -29,15 +29,8 @@ extension TodoListTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let task = getTaskForIndex(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        var contentConfiguration = cell.defaultContentConfiguration()
-
-        if let task = task as? ImportantTask {
-            contentConfiguration.secondaryText = "Deadline: \(task.deadLine.formatted())"
-        }
-
-        contentConfiguration.text = task.titel
-        cell.contentConfiguration = contentConfiguration
-
+        configureCell(cell, with: task)
+        
         return cell
     }
 }
@@ -51,6 +44,17 @@ private extension TodoListTableViewController {
 
     func getTaskForIndex(_ indexPath: IndexPath) -> Task {
         taskManager.getAllTasks()[indexPath.row]
+    }
+    
+    func configureCell(_ cell: UITableViewCell,with task: Task) {
+        var contentConfiguration = cell.defaultContentConfiguration()
+
+        if let task = task as? ImportantTask {
+            contentConfiguration.secondaryText = "Deadline: \(task.deadLine.formatted())"
+        }
+
+        contentConfiguration.text = task.titel
+        cell.contentConfiguration = contentConfiguration
     }
 }
 
