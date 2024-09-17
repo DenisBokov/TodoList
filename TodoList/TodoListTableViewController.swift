@@ -17,17 +17,11 @@ final class TodoListTableViewController: UITableViewController {
 
         setup()
     }
+}
 
-    private func setup() {
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    }
+// MARK: - Table view data source
 
-    private func getTaskForIndex(_ indexPath: IndexPath) -> Task {
-        taskManager.getAllTasks()[indexPath.row]
-    }
-
-    // MARK: - Table view data source
-
+extension TodoListTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         taskManager.getAllTasks().count
     }
@@ -45,6 +39,18 @@ final class TodoListTableViewController: UITableViewController {
         cell.contentConfiguration = contentConfiguration
 
         return cell
+    }
+}
+
+// MARK: - Private Metods
+
+private extension TodoListTableViewController {
+    func setup() {
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+
+    func getTaskForIndex(_ indexPath: IndexPath) -> Task {
+        taskManager.getAllTasks()[indexPath.row]
     }
 }
 
