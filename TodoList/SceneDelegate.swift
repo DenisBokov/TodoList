@@ -55,7 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         ]
         taskManager.addTasks(tasks: tasks)
 
-        return taskManager as! TaskManagerProtocol
+        return taskManager
     }
 }
 

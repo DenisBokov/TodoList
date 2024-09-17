@@ -8,13 +8,13 @@
 import Foundation
 
 protocol TaskManagerProtocol {
-    func allTasks() -> [Task]
+    func getAllTasks() -> [Task]
     func completedTasks() -> [Task]
     func uncompletedTasks() -> [Task]
     func addTasks(tasks: [Task])
 }
 
-final class TaskManager {
+final class TaskManager: TaskManagerProtocol {
     private var taskList: [Task] = []
     
     
