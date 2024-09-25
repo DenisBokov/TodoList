@@ -7,13 +7,7 @@
 
 import Foundation
 
-protocol TaskManagerProtocol {
-    func getAllTasks() -> [Task]
-    func completedTasks() -> [Task]
-    func uncompletedTasks() -> [Task]
-    func addTasks(tasks: [Task])
-}
-
+/// Предоставляет список заданий
 final class TaskManager: TaskManagerProtocol {
     private var taskList: [Task] = []
     
@@ -41,21 +35,7 @@ final class TaskManager: TaskManagerProtocol {
     }
     
     func removeTask(task: Task) {
-        
         /// Для удаления сравниванием объекты 
         taskList.removeAll { $0 === task }
-    }
-}
-
-extension ImportantTask.TaskPriority: CustomStringConvertible {
-    var description: String {
-        switch self {
-        case .high:
-            return "!!!"
-        case .medium:
-            return "!!"
-        case .low:
-            return "!"
-        }
     }
 }

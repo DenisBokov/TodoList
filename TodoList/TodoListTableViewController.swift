@@ -36,7 +36,7 @@ extension TodoListTableViewController {
 }
 
 // MARK: - Private Metods
-
+/// Конфигурация UI
 private extension TodoListTableViewController {
     func setup() {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
