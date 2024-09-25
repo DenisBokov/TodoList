@@ -44,7 +44,7 @@ final class ImportantTask: Task {
         super.init(titel: titel, completed: completed)
     }
     
-    enum TaskPriority {
+    enum TaskPriority: Int {
         case low
         case medium
         case high

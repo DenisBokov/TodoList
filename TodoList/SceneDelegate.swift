@@ -43,18 +43,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             withIdentifier: "TodoListTableViewController"
         ) as! TodoListTableViewController
 
-        viewController.taskManager = (buildTaskManager() as! TaskManager)
+        viewController.taskManager = buildTaskManager()
 
         return viewController
     }
 
     func buildTaskManager() -> TaskManagerProtocol {
-        let taskManager = TaskManager()
+        let taskManager = OrderdTaskManager(taskManager: TaskManager())
         let tasks = [
-            ImportantTask(titel: "Сходить за хлебом", completed: false, taskPriorety: .low, date: Date()),
+            ImportantTask(titel: "Сходить за хлебом", completed: false, taskPriorety: .medium, date: Date()),
             ImportantTask(titel: "Убраться дома", completed: true, taskPriorety: .medium, date: Date()),
-            ImportantTask(titel: "Сходить за хлебом", completed: false, taskPriorety: .high, date: Date()),
-            RegularTask(titel: "Сходить за хлебом", completed: true)
+            ImportantTask(titel: "SwiftUI", completed: false, taskPriorety: .high, date: Date()),
+            RegularTask(titel: "Сходить за хлебом", completed: true),
+            ImportantTask(titel: "Структуры данных", completed: false, taskPriorety: .low, date: Date())
         ]
         taskManager.addTasks(tasks: tasks)
 
