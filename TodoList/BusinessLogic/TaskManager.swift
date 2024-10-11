@@ -10,8 +10,7 @@ import Foundation
 /// Предоставляет список заданий
 final class TaskManager: TaskManagerProtocol {
     private var taskList: [Task] = []
-    
-    
+        
     func completedTasks() -> [Task] {
         taskList.filter { $0.completed }
     }

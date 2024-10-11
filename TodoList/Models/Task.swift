@@ -7,24 +7,23 @@
 
 import Foundation
 
+enum Task {
+    case regular(RegularTask)
+    case important(ImportantTask)
+}
 
-class Task {
+struct RegularTask {
+    let titel: String
+    let completed: Bool
+}
+
+struct ImportantTask {
     let titel: String
     let completed: Bool
     
-    init(titel: String, completed: Bool) {
-        self.titel = titel
-        self.completed = completed
-    }
-}
-
-final class RegularTask: Task {
-}
-
-final class ImportantTask: Task {
-    
     let taskPriorety: TaskPriority
     let dateCreationTask: Date
+    let taskStatus: TaskStatus
     
     var deadLine: Date {
         switch taskPriorety {
@@ -37,17 +36,17 @@ final class ImportantTask: Task {
         }
     }
     
-    init(titel: String, completed: Bool, taskPriorety: TaskPriority, date: Date) {
-        self.taskPriorety = taskPriorety
-        self.dateCreationTask = date
-        
-        super.init(titel: titel, completed: completed)
-    }
-    
     enum TaskPriority: Int {
         case low
         case medium
         case high
+    }
+    
+    enum TaskStatus {
+        case notStarted
+        case complited
+        case canceled
+        case paused
     }
 }
 
