@@ -35,6 +35,6 @@ final class TaskManager: TaskManagerProtocol {
     
     func removeTask(task: Task) {
         /// Для удаления сравниванием объекты 
-        taskList.removeAll { $0 === task }
+        taskList.removeAll { $0 == task }
     }
 }

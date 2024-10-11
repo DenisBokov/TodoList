@@ -17,15 +17,15 @@ final class OrderdTaskManager: TaskManagerProtocol {
     }
     
     func getAllTasks() -> [Task] {
-        sorted(tasks: taskManager.getAllTasks())
+        taskManager.getAllTasks().sorted(by: <)
     }
     
     func completedTasks() -> [Task] {
-        sorted(tasks: taskManager.completedTasks())
+        taskManager.completedTasks().sorted(by: <)
     }
     
     func uncompletedTasks() -> [Task] {
-        sorted(tasks: taskManager.uncompletedTasks())
+        taskManager.uncompletedTasks().sorted(by: <)
     }
     
     func addTasks(tasks: [Task]) {
@@ -33,18 +33,18 @@ final class OrderdTaskManager: TaskManagerProtocol {
     }
 }
 
-private extension OrderdTaskManager {
-    func sorted(tasks: [Task]) -> [Task] {
-        tasks.sorted {
-            if let task0 = $0 as? ImportantTask, let task1 = $1 as? ImportantTask {
-                return task0.taskPriorety.rawValue > task1.taskPriorety.rawValue
-            }
-            
-            if $0 is ImportantTask, $1 is RegularTask {
-                return true
-            }
-            
-            return false
-        }
-    }
-}
+//private extension OrderdTaskManager {
+//    func sorted(tasks: [Task]) -> [Task] { 
+//        tasks.sorted {
+//            if let task0 = $0 as? ImportantTask, let task1 = $1 as? ImportantTask {
+//                return task0.taskPriorety.rawValue > task1.taskPriorety.rawValue
+//            }
+//            
+//            if $0 is ImportantTask, $1 is RegularTask {
+//                return true
+//            }
+//            
+//            return false
+//        }
+//    }
+//}

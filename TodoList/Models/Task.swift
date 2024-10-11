@@ -19,8 +19,6 @@ struct RegularTask {
 
 struct ImportantTask {
     let titel: String
-    let completed: Bool
-    
     let taskPriorety: TaskPriority
     let dateCreationTask: Date
     let taskStatus: TaskStatus
@@ -47,6 +45,67 @@ struct ImportantTask {
         case complited
         case canceled
         case paused
+    }
+}
+
+extension Task {
+    var completed: Bool {
+        switch self {
+        case .regular(let regularTask):
+            return regularTask.completed
+        case .important(let importantTask):
+            return importantTask.completed
+        }
+    }
+    
+    var titel: String {
+        switch self {
+        case .regular(let regularTask):
+            return regularTask.titel
+        case .important(let importantTask):
+            return importantTask.titel
+        }
+    }
+}
+
+extension ImportantTask {
+    var completed: Bool {
+        taskStatus == .complited
+    }
+}
+
+//extension Task: Equatable {
+//    static func == (lhs: Task, rhs: Task) -> Bool {
+//        return lhs == rhs
+//    }
+//}
+
+extension Task: Comparable {
+    static func < (lhs: Task, rhs: Task) -> Bool {
+        switch (lhs, rhs) {
+        case (.important(let leftImportant), .important(let rightImportant)):
+            return leftImportant.taskPriorety.rawValue > rightImportant.taskPriorety.rawValue
+        case (.important, .regular):
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+
+extension RegularTask: Equatable {
+    static func == (lhs: RegularTask, rhs: RegularTask) -> Bool {
+        return lhs.titel == rhs.titel && lhs.completed == rhs.completed
+    }
+}
+
+extension ImportantTask: Equatable {
+    static func == (lhs: ImportantTask, rhs: ImportantTask) -> Bool {
+        return lhs.titel == rhs.titel &&
+        lhs.taskStatus == rhs.taskStatus &&
+        lhs.taskPriorety == rhs.taskPriorety &&
+        lhs.dateCreationTask == rhs.dateCreationTask
     }
 }
 

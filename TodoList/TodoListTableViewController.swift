@@ -48,8 +48,8 @@ private extension TodoListTableViewController {
     
     func configureCell(_ cell: UITableViewCell,with task: Task) {
         var contentConfiguration = cell.defaultContentConfiguration()
-
-        if let task = task as? ImportantTask {
+        
+        if case let .important(task) = task {
             contentConfiguration.secondaryText = "Deadline: \(task.deadLine.formatted())"
         }
 
