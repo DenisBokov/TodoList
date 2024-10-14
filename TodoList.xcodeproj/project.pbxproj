@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EF43AFFA2CA412B2008A6461 /* OrderdTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF43AFF92CA412B2008A6461 /* OrderdTaskManager.swift */; };
+		EF70E9732CBD98F7001CAC32 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70E9722CBD98F7001CAC32 /* LoginViewController.swift */; };
+		EF70E9762CBD9977001CAC32 /* UIViewController + Previw.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70E9752CBD9977001CAC32 /* UIViewController + Previw.swift */; };
 		EF8E30BD2C7624CA00861292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8E30BC2C7624CA00861292 /* AppDelegate.swift */; };
 		EF8E30BF2C7624CA00861292 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8E30BE2C7624CA00861292 /* SceneDelegate.swift */; };
 		EF8E30C12C7624CA00861292 /* TodoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8E30C02C7624CA00861292 /* TodoListTableViewController.swift */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		EF43AFF92CA412B2008A6461 /* OrderdTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderdTaskManager.swift; sourceTree = "<group>"; };
+		EF70E9722CBD98F7001CAC32 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EF70E9752CBD9977001CAC32 /* UIViewController + Previw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Previw.swift"; sourceTree = "<group>"; };
 		EF8E30B92C7624CA00861292 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF8E30BC2C7624CA00861292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF8E30BE2C7624CA00861292 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF70E9712CBD98BA001CAC32 /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EF70E9722CBD98F7001CAC32 /* LoginViewController.swift */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		EF70E9742CBD9923001CAC32 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EF70E9752CBD9977001CAC32 /* UIViewController + Previw.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		EF8E30B02C7624CA00861292 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +82,8 @@
 		EF8E30BB2C7624CA00861292 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				EF70E9742CBD9923001CAC32 /* Extensions */,
+				EF70E9712CBD98BA001CAC32 /* LoginScreen */,
 				EF8E30D12C7626C700861292 /* Models */,
 				EF8E30D02C76265A00861292 /* BusinessLogic */,
 				EF8E30BC2C7624CA00861292 /* AppDelegate.swift */,
@@ -164,8 +186,10 @@
 			files = (
 				EFCD42C32C99BF9A0022DF91 /* TaskManagerProtocol.swift in Sources */,
 				EF43AFFA2CA412B2008A6461 /* OrderdTaskManager.swift in Sources */,
+				EF70E9762CBD9977001CAC32 /* UIViewController + Previw.swift in Sources */,
 				EF8E30C12C7624CA00861292 /* TodoListTableViewController.swift in Sources */,
 				EF8E30BD2C7624CA00861292 /* AppDelegate.swift in Sources */,
+				EF70E9732CBD98F7001CAC32 /* LoginViewController.swift in Sources */,
 				EF8E30D52C7627B100861292 /* Task.swift in Sources */,
 				EF8E30D32C7626E700861292 /* TaskManager.swift in Sources */,
 				EF8E30BF2C7624CA00861292 /* SceneDelegate.swift in Sources */,

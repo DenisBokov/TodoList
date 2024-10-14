@@ -11,7 +11,7 @@ import UIKit
 final class TodoListTableViewController: UITableViewController {
     private var taskManager: TaskManagerProtocol!
     
-    init(taskManager: TaskManagerProtocol!) {
+    init(taskManager: TaskManagerProtocol) {
         super.init(nibName: nil, bundle: nil)
         self.taskManager = taskManager
     }
