@@ -12,6 +12,13 @@ class LoginViewController: UIViewController {
     
 }
 
+private extension LoginViewController {
+    func makeTextFild() -> UITextField {
+        let textField = UITextField()
+        
+        return textField
+    }
+}
 
 struct ViewControllerProvider: PreviewProvider {
     static var previews: some View {
