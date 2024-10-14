@@ -9,8 +9,17 @@ import UIKit
 
 
 final class TodoListTableViewController: UITableViewController {
-    var taskManager: TaskManagerProtocol!
-
+    private var taskManager: TaskManagerProtocol!
+    
+    init(taskManager: TaskManagerProtocol!) {
+        super.init(nibName: nil, bundle: nil)
+        self.taskManager = taskManager
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "TodoList"

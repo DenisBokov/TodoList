@@ -26,24 +26,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
     }
 
-    func sceneDidDisconnect(_ scene: UIScene) {}
-
-    func sceneDidBecomeActive(_ scene: UIScene) {}
-
-    func sceneWillResignActive(_ scene: UIScene) {}
-
-    func sceneWillEnterForeground(_ scene: UIScene) {}
-
-    func sceneDidEnterBackground(_ scene: UIScene) {}
-
     func assembly() -> UIViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-        let viewController = storyboard.instantiateViewController(
-            withIdentifier: "TodoListTableViewController"
-        ) as! TodoListTableViewController
-
-        viewController.taskManager = buildTaskManager()
+        let viewController = TodoListTableViewController(taskManager: buildTaskManager())
 
         return viewController
     }
