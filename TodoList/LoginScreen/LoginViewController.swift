@@ -10,11 +10,20 @@ import SwiftUI
 
 class LoginViewController: UIViewController {
     
+    private lazy var loginTextField = makeTextFild()
+    private lazy var passTextField = makeTextFild()
+    
 }
 
 private extension LoginViewController {
     func makeTextFild() -> UITextField {
         let textField = UITextField()
+        
+        textField.backgroundColor = .white
+        textField.textColor = .black
+        textField.layer.borderWidth = Sizes.borderWidth
+        textField.layer.cornerRadius = Sizes.cornerRadius
+        textField.layer.borderColor = UIColor.lightGray.cgColor
         
         return textField
     }
