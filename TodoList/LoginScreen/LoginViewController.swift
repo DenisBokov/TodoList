@@ -13,6 +13,10 @@ class LoginViewController: UIViewController {
     private lazy var loginTextField = makeTextFild()
     private lazy var passTextField = makeTextFild()
     
+    @objc func login() {
+        
+    }
+    
 }
 
 private extension LoginViewController {
@@ -26,6 +30,18 @@ private extension LoginViewController {
         textField.layer.borderColor = UIColor.lightGray.cgColor
         
         return textField
+    }
+    
+    func makeButton() -> UIButton {
+        let button = UIButton()
+        
+        button.configuration = .filled()
+        button.configuration?.cornerStyle = .medium
+        button.configuration?.baseBackgroundColor = .red
+        button.configuration?.title = "Login"
+        button.addTarget(self, action: #selector(login), for: .touchUpInside)
+        
+        return button
     }
 }
 
