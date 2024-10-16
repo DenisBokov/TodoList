@@ -12,6 +12,12 @@ class LoginViewController: UIViewController {
     
     private lazy var loginTextField = makeTextFild()
     private lazy var passTextField = makeTextFild()
+    private lazy var loginButton = makeButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+    }
     
     @objc func login() {
         
@@ -19,6 +25,7 @@ class LoginViewController: UIViewController {
     
 }
 
+/// Настрока UI элементов
 private extension LoginViewController {
     func makeTextFild() -> UITextField {
         let textField = UITextField()
@@ -28,6 +35,8 @@ private extension LoginViewController {
         textField.layer.borderWidth = Sizes.borderWidth
         textField.layer.cornerRadius = Sizes.cornerRadius
         textField.layer.borderColor = UIColor.lightGray.cgColor
+        
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
     }
@@ -41,7 +50,14 @@ private extension LoginViewController {
         button.configuration?.title = "Login"
         button.addTarget(self, action: #selector(login), for: .touchUpInside)
         
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
         return button
+    }
+    
+    func setup() {
+        title = "Autorization"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 
