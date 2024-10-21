@@ -89,12 +89,12 @@
 				EF8E30D12C7626C700861292 /* Models */,
 				EF8E30D02C76265A00861292 /* BusinessLogic */,
 				EF8E30BC2C7624CA00861292 /* AppDelegate.swift */,
+				EF70E9772CBDAB71001CAC32 /* Sizes.swift */,
 				EF8E30BE2C7624CA00861292 /* SceneDelegate.swift */,
 				EF8E30C02C7624CA00861292 /* TodoListTableViewController.swift */,
 				EF8E30C52C7624CB00861292 /* Assets.xcassets */,
 				EF8E30C72C7624CB00861292 /* LaunchScreen.storyboard */,
 				EF8E30CA2C7624CB00861292 /* Info.plist */,
-				EF70E9772CBDAB71001CAC32 /* Sizes.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";

@@ -20,6 +20,7 @@ enum Sizes {
     enum L {
         static let wigth: CGFloat = 200
         static let height: CGFloat = 50
+        static let wightmultiplier: CGFloat = 0.9
     }
     
     enum M {
