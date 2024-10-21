@@ -33,11 +33,31 @@ class LoginViewController: UIViewController {
             let taskManager = OrderdTaskManager(taskManager: TaskManager())
             
             let tasks: [Task] = [
-                .important(ImportantTask(titel: "Сходить за хлебом", taskPriorety: .high, dateCreationTask: Date(), taskStatus: .notStarted)),
-                .important(ImportantTask(titel: "Убраться дома", taskPriorety: .medium, dateCreationTask: Date(), taskStatus: .notStarted)),
-                .important(ImportantTask(titel: "SwiftUI", taskPriorety: .high, dateCreationTask: Date(), taskStatus: .notStarted)),
+                .important(ImportantTask(
+                    titel: "Сходить за хлебом",
+                    taskPriorety: .high,
+                    dateCreationTask: Date(),
+                    taskStatus: .notStarted)
+                ),
+                .important(ImportantTask(
+                    titel: "Убраться дома",
+                    taskPriorety: .medium,
+                    dateCreationTask: Date(),
+                    taskStatus: .notStarted)
+                ),
+                .important(ImportantTask(
+                    titel: "SwiftUI",
+                    taskPriorety: .high,
+                    dateCreationTask: Date(),
+                    taskStatus: .notStarted)
+                ),
                 .regular(RegularTask(titel: "Приготовить кофе", completed: true)),
-                .important(ImportantTask(titel: "труктуры данных", taskPriorety: .low, dateCreationTask: Date(), taskStatus: .notStarted))
+                .important(ImportantTask(
+                    titel: "труктуры данных",
+                    taskPriorety: .low,
+                    dateCreationTask: Date(),
+                    taskStatus: .notStarted)
+                )
             ]
             
             taskManager.addTasks(tasks: tasks)
