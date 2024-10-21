@@ -14,13 +14,38 @@ class LoginViewController: UIViewController {
     private lazy var passTextField = makeTextFild()
     private lazy var loginButton = makeButton()
     
+    private var taskManager: TaskManagerProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
     
     @objc func login() {
+        func assembly() -> UIViewController {
+
+            let viewController = TodoListTableViewController(taskManager: buildTaskManager())
+
+            return viewController
+        }
+
+        func buildTaskManager() -> TaskManagerProtocol {
+            let taskManager = OrderdTaskManager(taskManager: TaskManager())
+            
+            let tasks: [Task] = [
+                .important(ImportantTask(titel: "Сходить за хлебом", taskPriorety: .high, dateCreationTask: Date(), taskStatus: .notStarted)),
+                .important(ImportantTask(titel: "Убраться дома", taskPriorety: .medium, dateCreationTask: Date(), taskStatus: .notStarted)),
+                .important(ImportantTask(titel: "SwiftUI", taskPriorety: .high, dateCreationTask: Date(), taskStatus: .notStarted)),
+                .regular(RegularTask(titel: "Приготовить кофе", completed: true)),
+                .important(ImportantTask(titel: "труктуры данных", taskPriorety: .low, dateCreationTask: Date(), taskStatus: .notStarted))
+            ]
+            
+            taskManager.addTasks(tasks: tasks)
+
+            return taskManager
+        }
         
+        self.present(assembly(), animated: true)
     }
     
 }
