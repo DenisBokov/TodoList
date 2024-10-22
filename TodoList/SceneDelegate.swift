@@ -20,33 +20,60 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
         
-        window.rootViewController = UINavigationController(rootViewController: LoginViewController())
+        window.rootViewController = UINavigationController(rootViewController: assemblyLogin())
         window.makeKeyAndVisible()
         
         self.window = window
     }
+    
+    func assemblyLogin() -> UIViewController {
+        
+        let viewController = LoginViewController(nextScreen: assemblyToDoList())
+        
+        return viewController
+    }
+    
+    func assemblyToDoList() -> UIViewController {
 
-//    func assembly() -> UIViewController {
-//
-//        let viewController = TodoListTableViewController(taskManager: buildTaskManager())
-//
-//        return viewController
-//    }
-//
-//    func buildTaskManager() -> TaskManagerProtocol {
-//        let taskManager = OrderdTaskManager(taskManager: TaskManager())
-//        
-//        let tasks: [Task] = [
-//            .important(ImportantTask(titel: "Сходить за хлебом", taskPriorety: .high, dateCreationTask: Date(), taskStatus: .notStarted)),
-//            .important(ImportantTask(titel: "Убраться дома", taskPriorety: .medium, dateCreationTask: Date(), taskStatus: .notStarted)),
-//            .important(ImportantTask(titel: "SwiftUI", taskPriorety: .high, dateCreationTask: Date(), taskStatus: .notStarted)),
-//            .regular(RegularTask(titel: "Приготовить кофе", completed: true)),
-//            .important(ImportantTask(titel: "труктуры данных", taskPriorety: .low, dateCreationTask: Date(), taskStatus: .notStarted))
-//        ]
-//        
-//        taskManager.addTasks(tasks: tasks)
-//
-//        return taskManager
-//    }
+        let viewController = TodoListTableViewController(taskManager: buildTaskManager())
+
+        return viewController
+    }
+
+    func buildTaskManager() -> TaskManagerProtocol {
+        let taskManager = OrderdTaskManager(taskManager: TaskManager())
+        
+        let tasks: [Task] = [
+            .important(ImportantTask(
+                titel: "Сходить за хлебом",
+                taskPriorety: .high,
+                dateCreationTask: Date(),
+                taskStatus: .notStarted)
+            ),
+            .important(ImportantTask(
+                titel: "Убраться дома",
+                taskPriorety: .medium,
+                dateCreationTask: Date(),
+                taskStatus: .notStarted)
+            ),
+            .important(ImportantTask(
+                titel: "SwiftUI",
+                taskPriorety: .high,
+                dateCreationTask: Date(),
+                taskStatus: .notStarted)
+            ),
+            .regular(RegularTask(titel: "Приготовить кофе", completed: true)),
+            .important(ImportantTask(
+                titel: "труктуры данных",
+                taskPriorety: .low,
+                dateCreationTask: Date(),
+                taskStatus: .notStarted)
+            )
+        ]
+        
+        taskManager.addTasks(tasks: tasks)
+
+        return taskManager
+    }
 }
 

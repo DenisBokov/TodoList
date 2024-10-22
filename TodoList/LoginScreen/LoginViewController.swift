@@ -8,13 +8,22 @@
 import UIKit
 import SwiftUI
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     private lazy var loginTextField = makeTextFild()
     private lazy var passTextField = makeTextFild()
     private lazy var loginButton = makeButton()
     
-    private var taskManager: TaskManagerProtocol!
+    private let nextScreen: UIViewController!
+    
+    init(nextScreen: UIViewController) {
+        self.nextScreen = nextScreen
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,50 +31,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func login() {
-        func assembly() -> UIViewController {
-
-            let viewController = TodoListTableViewController(taskManager: buildTaskManager())
-
-            return viewController
-        }
-
-        func buildTaskManager() -> TaskManagerProtocol {
-            let taskManager = OrderdTaskManager(taskManager: TaskManager())
-            
-            let tasks: [Task] = [
-                .important(ImportantTask(
-                    titel: "Сходить за хлебом",
-                    taskPriorety: .high,
-                    dateCreationTask: Date(),
-                    taskStatus: .notStarted)
-                ),
-                .important(ImportantTask(
-                    titel: "Убраться дома",
-                    taskPriorety: .medium,
-                    dateCreationTask: Date(),
-                    taskStatus: .notStarted)
-                ),
-                .important(ImportantTask(
-                    titel: "SwiftUI",
-                    taskPriorety: .high,
-                    dateCreationTask: Date(),
-                    taskStatus: .notStarted)
-                ),
-                .regular(RegularTask(titel: "Приготовить кофе", completed: true)),
-                .important(ImportantTask(
-                    titel: "труктуры данных",
-                    taskPriorety: .low,
-                    dateCreationTask: Date(),
-                    taskStatus: .notStarted)
-                )
-            ]
-            
-            taskManager.addTasks(tasks: tasks)
-
-            return taskManager
-        }
-        
-        self.present(assembly(), animated: true)
+        navigationController?.pushViewController(nextScreen, animated: true)
     }
     
 }
@@ -103,10 +69,15 @@ private extension LoginViewController {
     func setup() {
         title = "Autorization"
         navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor = .white
         
         view.addSubview(loginButton)
         view.addSubview(passTextField)
         view.addSubview(loginTextField)
+        
+        loginTextField.placeholder = " Введите свой логин"
+        passTextField.placeholder = " Введите соой пароль"
+        passTextField.isSecureTextEntry = true
         
         setupLayoutElements()
     }
@@ -148,7 +119,7 @@ private extension LoginViewController {
 struct ViewControllerProvider: PreviewProvider {
     static var previews: some View {
         Group {
-            LoginViewController().preview()
+            LoginViewController(nextScreen: UIViewController()).preview()
         }
     }
 }

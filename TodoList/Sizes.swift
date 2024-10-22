@@ -12,7 +12,7 @@ enum Sizes {
     static let borderWidth: CGFloat = 1
     
     enum Padding {
-        static let helf: CGFloat = 8
+        static let half: CGFloat = 8
         static let normal: CGFloat = 16
         static let double: CGFloat = 32
     }
